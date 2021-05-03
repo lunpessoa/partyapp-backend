@@ -17,5 +17,5 @@ app.use('/auth', routesAuth);
 app.use('/agendamentos', routesUserSchedule);
 
 app.listen(process.env.PORT || 3333, () => {
-  console.log("José Carlos filho nascimento")
+  console.log("Success Connecting")
 });
