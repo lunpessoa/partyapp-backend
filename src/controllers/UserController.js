@@ -65,8 +65,9 @@ module.exports = {
       const { info } = await req.body;
 
       validation.forEach((validate) => {
-        if(params === validate.nome && !validate.regex.test(info))
+        if(params === validate.nome && !validate.regex.test(info)){
           return res.status(400).send({ error: validate.error})
+        }
       })
 
       if(params == "email" || params == "cpf"){
