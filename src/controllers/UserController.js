@@ -64,10 +64,9 @@ module.exports = {
       const params = req.params.info
       const { info } = await req.body;
 
-      validation.forEach((validate) => {
-        if(params === validate.nome && !validate.regex.test(info)){
-          return res.status(400).send({ error: validate.error})
-        }
+      validation.map((validate) => {
+        if(params === validate.nome && !validate.regex.test(info))
+          throw new Error(validate.error);
       })
 
       if(params == "email" || params == "cpf"){
@@ -94,7 +93,7 @@ module.exports = {
 
       return res.send({ message: 'Perfil Updated'})
     } catch (err) {
-        return res.status(401).send({ error: "Error on update Profile values"})
+      return res.status(400).send({error: err.message})
     }
   }
 }
