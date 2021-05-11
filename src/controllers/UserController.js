@@ -93,7 +93,7 @@ module.exports = {
 
       return res.send({ message: 'Perfil Updated'})
     } catch (err) {
-      return res.status(400).send({error: err.message})
+      return res.status(401).send({error: err.message})
     }
   }
 }
