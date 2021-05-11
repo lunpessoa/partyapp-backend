@@ -95,5 +95,19 @@ module.exports = {
     } catch (err) {
       return res.status(401).send({error: err.message})
     }
+  },
+  async removeAppointment(req, res) {
+    try{
+      const { idAgenda } = req.body;
+      console.log(idAgenda);
+      await UserSchedule.destroy({
+        where: {
+          idAgenda
+        }
+      });
+      return res.send({mensagem: "Successful deleted appointment"})
+    } catch (err){
+      return res.status(400).send({error: "Deleted Appointment Error"})
+    }
   }
 }

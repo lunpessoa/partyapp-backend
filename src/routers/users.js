@@ -6,6 +6,7 @@ const AuthMiddleware = require('../middlewares/auth');
 routesUser.use(AuthMiddleware);
 routesUser.get('/', UserController.userProfile);
 routesUser.get('/agenda', UserController.userSchedule);
+routesUser.delete('/agenda/delete', UserController.removeAppointment);
 routesUser.put('/alter/:info', UserController.updateProfile);
 routesUser.put('/alter/user/endereco', UserController.updateAdress);
 

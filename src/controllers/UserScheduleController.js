@@ -7,6 +7,15 @@ module.exports ={
       const data = req.query.data;
       const diaSemana = req.query.diaSemana;
 
+      // SELECT `WeekHours`.`id_weekhours` AS `idWeekhours`,
+      // `WeekHours`.`hora`,
+      // `WeekHours`.`dia_semana` AS `diaSemana`
+      // FROM `week_hours` AS `WeekHours`
+      // LEFT OUTER JOIN `user_schedule` AS `UserSchedule` ON `WeekHours`.`id_weekhours` = `UserSchedule`.`id_weekhours`
+      // AND `UserSchedule`.`data` = '2021-05-03'
+      // WHERE `UserSchedule`.`id_weekhours` IS NULL
+      // AND `WeekHours`.`dia_semana` = 'Segunda-Feira';
+
       const openHours = await WeekHours.findAll({
         attributes: ['idWeekhours', 'hora'],
         where: {
@@ -64,5 +73,5 @@ module.exports ={
     } catch (err){
       return res.status(400).send({error: "Create schedule for profile Error"})
     }
-  }
+  },
 }

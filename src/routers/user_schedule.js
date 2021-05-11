@@ -7,5 +7,4 @@ const AuthMiddleware = require('../middlewares/auth');
 routesUserSchedule.use(AuthMiddleware);
 routesUserSchedule.post('/agendar', UserScheduleController.store);
 
-
 module.exports = routesUserSchedule;
